@@ -1,13 +1,13 @@
 :root {
   --color-bg: #FFFFFF; /* 깔끔한 화이트 배경 */
-  --color-beige-alt: #F8F9FA; /* 빛바랜 연그레이 (대체 배경) */
-  --color-blue-light: #F1F5F9; /* 아주 연한 슬레이트 그레이 */
-  --color-blue: #1E293B; /* 다크 슬레이트 (주요 포인트 색상) */
-  --color-blue-dark: #0F172A; /* 가장 어두운 슬레이트 (버튼 호버 등) */
-  --color-green-light: #F8F9FA; /* 연그레이 */
-  --color-green: #3B82F6; /* 모던 블루 (서브 포인트) */
-  --color-text: #111827; /* 진한 텍스트 (제목) */
-  --color-text-light: #4B5563; /* 부드러운 텍스트 (본문) */
+  --color-beige-alt: #F8FAFC; /* 은은한 블루 그레이 */
+  --color-blue-light: #DBEAFE; /* 연한 블루 */
+  --color-blue: #2563EB; /* 메인 블루 */
+  --color-blue-dark: #1D4ED8; /* 다크 블루 (버튼 호버 등) */
+  --color-green-light: #F0FDF4; /* 연그레이 */
+  --color-green: #0EA5E9; /* 스카이 블루 (서브 포인트) */
+  --color-text: #0F172A; /* 진한 텍스트 */
+  --color-text-light: #475569; /* 부드러운 텍스트 */
   --color-white: #FFFFFF;
   
   --font-main: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
