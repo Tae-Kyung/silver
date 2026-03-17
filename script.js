@@ -47,13 +47,51 @@ document.addEventListener('DOMContentLoaded', () => {
     observer.observe(elem);
   });
 
-  // 예약/상담 폼 제출 처리
+  // 예약/상담 폼 제출 처리 및 XSS 검증
   const contactForm = document.getElementById('consultationForm');
   if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault(); // 기본 제출 동작 방지
-      const name = document.getElementById('name').value;
-      alert(`감사합니다, ${name}님. 상담 신청이 완료되었습니다.\n빠른 시일 내에 전문 상담사가 연락드리겠습니다.`);
+      
+      const nameInput = document.getElementById('name');
+      const phoneInput = document.getElementById('phone');
+      const messageInput = document.getElementById('message');
+      
+      let name = nameInput.value.trim();
+      let phone = phoneInput.value.trim();
+      let message = messageInput ? messageInput.value.trim() : '';
+
+      // 1. 단순 빈칸 검증
+      if (!name || !phone) {
+        alert("성함과 연락처를 모두 입력해주세요.");
+        return;
+      }
+      
+      // 2. XSS 검증 로직 (보안 요구사항: <, > 치환 등 특수문자 방어)
+      const sanitizeInput = (str) => {
+        return str.replace(/[&<>'"]/g, 
+          tag => ({
+              '&': '&amp;',
+              '<': '&lt;',
+              '>': '&gt;',
+              "'": '&#39;',
+              '"': '&quot;'
+            }[tag])
+        );
+      };
+
+      const sanitizedName = sanitizeInput(name);
+      const sanitizedPhone = sanitizeInput(phone);
+      const sanitizedMessage = sanitizeInput(message);
+
+      // 모의 보안 위협 감지 로직
+      if (name !== sanitizedName || message !== sanitizedMessage) {
+        alert("허용되지 않은 특수문자 또는 스크립트 태그가 포함되어 있습니다. 안전한 텍스트로 수정해주세요.");
+        return; // 스크립트 제출 방지
+      }
+
+      // 최종 제출 처리
+      alert(`감사합니다, ${sanitizedName}님. 상담 신청이 완료되었습니다.\n작성해주신 연락처(${sanitizedPhone})로 빠른 시일 내에 전문 상담사가 연락드리겠습니다.`);
       contactForm.reset();
     });
   }

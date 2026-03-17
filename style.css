@@ -284,6 +284,98 @@ img {
   color: var(--color-text);
 }
 
+/* Pricing Section */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  align-items: center; /* 프리미엄 카드 돌출 효과를 위한 중앙 정렬 */
+}
+
+.pricing-card {
+  background: var(--color-white);
+  padding: 3rem 2rem;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  text-align: center;
+  position: relative;
+  transition: var(--transition);
+  border: 1px solid var(--color-blue-light);
+}
+
+.pricing-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+
+.pricing-card.premium {
+  border: 2px solid var(--color-blue);
+  transform: scale(1.05); /* 기본적으로 살짝 더 크게 노출 */
+  box-shadow: 0 20px 40px rgba(37, 99, 235, 0.15);
+  z-index: 2;
+}
+
+.pricing-card.premium:hover {
+  transform: scale(1.05) translateY(-5px);
+}
+
+.pricing-badge {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--color-blue);
+  color: var(--color-white);
+  padding: 0.5rem 1.5rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+}
+
+.pricing-header h3 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-blue-dark);
+}
+
+.pricing-desc {
+  color: var(--color-text-light);
+  margin-bottom: 2rem;
+  font-size: 1.05rem;
+}
+
+.pricing-features {
+  text-align: left;
+  margin-bottom: 2.5rem;
+}
+
+.pricing-features li {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 1.1rem;
+}
+
+.pricing-features li.disabled {
+  color: #9CA3AF; /* 비활성화 텍스트 색상 */
+}
+
+.text-blue { color: var(--color-blue); }
+.text-light { color: #D1D5DB; }
+
+.btn-outline-primary {
+  background-color: transparent;
+  color: var(--color-blue);
+  border: 2px solid var(--color-blue);
+}
+
+.btn-outline-primary:hover, .btn-outline-primary:focus {
+  background-color: var(--color-blue-light);
+  color: var(--color-blue-dark);
+}
+
 /* Features */
 .feature-flex {
   display: flex;
@@ -542,6 +634,19 @@ img {
     font-size: 16px;
   }
   
+  .pricing-grid {
+    align-items: stretch; /* 모바일에서는 동일한 높이로 정렬 */
+  }
+  
+  .pricing-card.premium {
+    transform: scale(1); /* 모바일에서는 스케일 제거 */
+    margin-top: 2rem; /* 위 뱃지로 인한 여백 확보 */
+  }
+  
+  .pricing-card.premium:hover {
+    transform: translateY(-5px);
+  }
+
   .nav {
     position: fixed;
     top: 70px;
